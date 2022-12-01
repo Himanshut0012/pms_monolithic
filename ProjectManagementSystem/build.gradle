@@ -1,0 +1,54 @@
+plugins {
+	id 'org.springframework.boot' version '2.7.2'
+	id 'io.spring.dependency-management' version '1.0.12.RELEASE'
+	id 'java'
+}
+
+subprojects {
+	apply plugin: 'java-library'
+	apply plugin: 'org.springframework.boot'
+}
+
+allprojects {
+	group = 'com.josh'
+	version = '0.0.1-SNAPSHOT'
+	java.sourceCompatibility(JavaVersion.VERSION_17)
+	configurations {
+		compileOnly.extendsFrom annotationProcessor
+	}
+	repositories {
+		mavenLocal()
+		mavenCentral()
+	}
+
+	dependencies {
+		// https://mvnrepository.com/artifact/net.kaczmarzyk/specification-arg-resolver
+		implementation 'net.kaczmarzyk:specification-arg-resolver:2.6.3'
+
+		implementation 'io.springfox:springfox-bean-validators:3.0.0'
+		implementation 'io.springfox:springfox-swagger-ui:3.0.0'
+		implementation 'io.springfox:springfox-boot-starter:3.0.0'
+		implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.7.3'
+		implementation 'org.springframework.boot:spring-boot-starter-web:2.7.3'
+		implementation 'org.liquibase:liquibase-core:4.15.0'
+		runtimeOnly 'org.postgresql:postgresql:42.5.0'
+		implementation 'org.projectlombok:lombok:1.18.24'
+		implementation 'org.modelmapper:modelmapper:3.1.0'
+		annotationProcessor 'org.projectlombok:lombok:1.18.24'
+		testImplementation 'org.springframework.boot:spring-boot-starter-test:2.7.3'
+		annotationProcessor 'org.projectlombok:lombok'
+		implementation 'org.springframework.boot:spring-boot-starter-validation:2.7.3'
+		implementation 'net.sf.jasperreports:jasperreports:6.20.0'
+		implementation 'com.lowagie:itext:2.1.7'
+	}
+	tasks.named('test') {
+		useJUnitPlatform()
+	}
+}
+
+
+
+
+
+
+

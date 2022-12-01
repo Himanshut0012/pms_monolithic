@@ -1,0 +1,5 @@
+rootProject.name = 'ProjectManagementSystem'
+include 'domain'
+include 'common'
+include 'security-jwt'
+include 'web'

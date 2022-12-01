@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+	<changeSet id="1" author="irfan">
+
+		<createTable tableName="project">
+			<column name="project_id" type="integer"/>
+			<column name="project_code" type="varchar(100)"/>
+			<column name="project_name" type="varchar(500)"/>
+			<column name="company_name" type="varchar(500)"/>
+			<column name="manager_id" type="integer"/>
+			<column name="repo_url" type="varchar(1000)"/>
+			<column name="status_id" type="integer"/>
+			<column name="technologies" type="varchar(1000)"/>
+			<column name="billing_id" type="integer"/>
+			<column name="start_date" type="timestamp"/>
+			<column name="end_date" type="timestamp"/>
+			<column name="created_by" type="varchar(20)"/>
+			<column name="created_date" type="timestamp"/>
+			<column name="last_updated_by" type="varchar(20)"/>
+			<column name="last_updated_date" type="timestamp"/>
+			<column name="record_status" type="varchar(1)"/>
+
+		</createTable>
+		<addNotNullConstraint tableName="project"
+							  columnName="project_id" />
+		<addNotNullConstraint tableName="project"
+							  columnName="project_code" />
+		<addNotNullConstraint tableName="project"
+							  columnName="project_name" />
+		<addNotNullConstraint tableName="project"
+							  columnName="company_name" />
+		<addNotNullConstraint tableName="project"
+							  columnName="manager_id" />
+		<addNotNullConstraint tableName="project"
+							  columnName="record_status" />
+		<addPrimaryKey tableName="project"
+					   columnNames="project_id" />
+		<addUniqueConstraint columnNames="project_id"
+							 tableName="project" />
+		<addAutoIncrement tableName="project"
+						  columnName="project_id" />
+
+
+	</changeSet>
+
+
+	<changeSet id="2" author="irfan">
+		<createTable tableName="employee">
+			<column name="emp_id" type="integer"/>
+			<column name="emp_name" type="varchar(200)"/>
+			<column name="email_id" type="varchar(50)"/>
+			<column name="mobile_no" type="varchar(10)"/>
+			<column name="department" type="varchar(50)"/>
+			<column name="created_by" type="varchar(20)"/>
+			<column name="created_date" type="timestamp"/>
+			<column name="last_updated_by" type="varchar(20)"/>
+			<column name="last_updated_date" type="timestamp"/>
+			<column name="record_status" type="varchar(1)"/>
+		</createTable>
+		<addNotNullConstraint tableName="employee"
+							  columnName="emp_id" />
+		<addNotNullConstraint tableName="employee"
+							  columnName="emp_name" />
+		<addNotNullConstraint tableName="employee"
+							  columnName="email_id" />
+		<addNotNullConstraint tableName="employee"
+							  columnName="mobile_no" />
+		<addNotNullConstraint tableName="employee"
+							  columnName="record_status" />
+		<addPrimaryKey tableName="employee" columnNames="emp_id" />
+		<addUniqueConstraint columnNames="emp_id"
+							 tableName="employee" />
+		<addAutoIncrement tableName="employee"
+						  columnName="emp_id" />
+	</changeSet>
+
+	<changeSet id="3" author="irfan">
+		<createTable tableName="billing">
+			<column name="billing_id" type="integer"/>
+			<column name="billing_type" type="varchar(20)"/>
+			<column name="created_by" type="varchar(20)"/>
+			<column name="created_date" type="timestamp"/>
+			<column name="last_updated_by" type="varchar(20)"/>
+			<column name="last_updated_date" type="timestamp"/>
+			<column name="record_status" type="varchar(1)"/>
+		</createTable>
+
+		<addNotNullConstraint tableName="billing"
+							  columnName="billing_id" />
+		<addNotNullConstraint tableName="billing"
+							  columnName="billing_type" />
+		<addNotNullConstraint tableName="billing"
+							  columnName="record_status" />
+		<addPrimaryKey tableName="billing"
+					   columnNames="billing_id" />
+		<addUniqueConstraint columnNames="billing_id"
+							 tableName="billing" />
+		<addAutoIncrement tableName="billing"
+						  columnName="billing_id" />
+	</changeSet>
+
+	<changeSet id="4" author="irfan">
+		<createTable tableName="project_contributors">
+			<column name="project_contributor_id" type="integer"/>
+			<column name="project_id" type="integer"/>
+			<column name="contributor_id" type="integer"/>
+			<column name="created_by" type="varchar(20)"/>
+			<column name="created_date" type="timestamp"/>
+			<column name="last_updated_by" type="varchar(20)"/>
+			<column name="last_updated_date" type="timestamp"/>
+			<column name="record_status" type="varchar(1)"/>
+		</createTable>
+
+		<addNotNullConstraint
+				tableName="project_contributors" columnName="project_contributor_id" />
+		<addNotNullConstraint
+				tableName="project_contributors" columnName="project_id" />
+		<addNotNullConstraint
+				tableName="project_contributors" columnName="contributor_id" />
+		<addNotNullConstraint
+				tableName="project_contributors" columnName="record_status" />
+		<addUniqueConstraint
+				columnNames="project_contributor_id" tableName="project_contributors" />
+		<addPrimaryKey tableName="project_contributors"
+					   columnNames="project_contributor_id" />
+		<addAutoIncrement tableName="project_contributors"
+						  columnName="project_contributor_id" />
+	</changeSet>
+
+	<changeSet id="5" author="irfan">
+		<createTable tableName="project_status">
+			<column name="project_status_id" type="integer"/>
+			<column name="status" type="varchar(100)"/>
+			<column name="created_by" type="varchar(20)"/>
+			<column name="created_date" type="timestamp"/>
+			<column name="last_updated_by" type="varchar(20)"/>
+			<column name="last_updated_date" type="timestamp"/>
+			<column name="record_status" type="varchar(1)"/>
+		</createTable>
+
+		<addNotNullConstraint tableName="project_status"
+							  columnName="project_status_id" />
+		<addNotNullConstraint tableName="project_status"
+							  columnName="status" />
+		<addNotNullConstraint tableName="project_status"
+							  columnName="record_status" />
+		<addPrimaryKey tableName="project_status"
+					   columnNames="project_status_id" />
+		<addUniqueConstraint
+				columnNames="project_status_id" tableName="project_status" />
+		<addAutoIncrement tableName="project_status"
+						  columnName="project_status_id" />
+
+		<addForeignKeyConstraint constraintName="project_billing_id_fk" referencedTableName="billing" baseColumnNames="billing_id" baseTableName="project" referencedColumnNames="billing_id"/>
+		<addForeignKeyConstraint constraintName="project_status_id_fk" referencedTableName="project_status" baseColumnNames="status_id" baseTableName="project" referencedColumnNames="project_status_id"/>
+		<addForeignKeyConstraint constraintName="project_id_fk" referencedTableName="project" baseColumnNames="project_id" baseTableName="project_contributors" referencedColumnNames="project_id"/>
+		<addForeignKeyConstraint constraintName="emp_id_fk" referencedTableName="employee" baseColumnNames="contributor_id" baseTableName="project_contributors" referencedColumnNames="emp_id"/>
+		<addForeignKeyConstraint constraintName="emp_id_fk" referencedTableName="employee" baseColumnNames="manager_id" baseTableName="project" referencedColumnNames="emp_id"/>
+
+	</changeSet>
+
+	<changeSet id="insert-employees" author="Sumit Shekhar">
+		<insert tableName="employee">
+			<column name="emp_name" value="Sumit Shekhar"/>
+			<column name="email_id" value="sk.shekhar@gmail.com"/>
+			<column name="mobile_no" value="9663478065"/>
+			<column name="department" value="Software Engineer"/>
+			<column name="record_status" value="W"/>
+		</insert>
+		<insert tableName="employee">
+			<column name="emp_name" value="Himanshu Tripathi"/>
+			<column name="email_id" value="himanshu.tripathi@gmail.com"/>
+			<column name="mobile_no" value="9663478066"/>
+			<column name="department" value="Senior Software Engineer"/>
+			<column name="record_status" value="W"/>
+		</insert>
+		<insert tableName="employee">
+			<column name="emp_name" value="Akshay Kolla"/>
+			<column name="email_id" value="akshay.kolla@gmail.com"/>
+			<column name="mobile_no" value="9663478067"/>
+			<column name="department" value="Software Engineer"/>
+			<column name="record_status" value="W"/>
+		</insert>
+		<insert tableName="employee">
+			<column name="emp_name" value=" Geetha sai"/>
+			<column name="email_id" value="geetha.sai@gmail.com"/>
+			<column name="mobile_no" value="9663478060"/>
+			<column name="department" value="Senior Software Engineer"/>
+			<column name="record_status" value="W"/>
+		</insert>
+		<insert tableName="employee">
+			<column name="emp_name" value="Rahul Kumar"/>
+			<column name="email_id" value="rahul.kumar@gmail.com"/>
+			<column name="mobile_no" value="9663478061"/>
+			<column name="department" value="Senior Software Engineer"/>
+			<column name="record_status" value="W"/>
+		</insert>
+	</changeSet>
+
+	<changeSet id="insert-billing" author="Sumit Shekhar">
+		<insert tableName="billing">
+			<column name="billing_type" value="Quarterly"/>
+			<column name="created_by" value="1"/>
+			<column name="created_date" value="2022-08-26"/>
+			<column name="last_updated_by" value="1"/>
+			<column name="last_updated_date" value="2022-08-26"/>
+			<column name="record_status" value="W"/>
+		</insert>
+		<insert tableName="billing">
+			<column name="billing_type" value="Monthly"/>
+			<column name="created_by" value="1"/>
+			<column name="created_date" value="2022-08-26"/>
+			<column name="last_updated_by" value="1"/>
+			<column name="last_updated_date" value="2022-08-26"/>
+			<column name="record_status" value="W"/>
+		</insert>
+		<insert tableName="billing">
+			<column name="billing_type" value="Yearly"/>
+			<column name="created_by" value="1"/>
+			<column name="created_date" value="2022-08-26"/>
+			<column name="last_updated_by" value="1"/>
+			<column name="last_updated_date" value="2022-08-26"/>
+			<column name="record_status" value="W"/>
+		</insert>
+	</changeSet>
+
+	<changeSet id="insert-project-status" author="Sumit Shekhar">
+		<insert tableName="project_status">
+			<column name="status" value="Development"/>
+			<column name="record_status" value="W"/>
+		</insert>
+		<insert tableName="project_status">
+			<column name="status" value="Scrapped"/>
+			<column name="record_status" value="W"/>
+		</insert>
+		<insert tableName="project_status">
+			<column name="status" value="Completed"/>
+			<column name="record_status" value="W"/>
+		</insert>
+		<insert tableName="project_status">
+			<column name="status" value="Testing"/>
+			<column name="record_status" value="W"/>
+		</insert>
+	</changeSet>
+
+	<changeSet id="insert-project" author="Sumit Shekhar">
+		<insert tableName="project">
+			<column name="project_code" value="P1"/>
+			<column name="project_name" value="Project 1"/>
+			<column name="company_name" value="Company1"/>
+			<column name="manager_id" value="1"/>
+			<column name="repo_url" value="bitbucket"/>
+			<column name="status_id" value="1"/>
+			<column name="technologies" value="java"/>
+			<column name="billing_id" value="1"/>
+			<column name="start_date" value="2022-08-26"/>
+			<column name="end_date" value="2022-08-26"/>
+			<column name="record_status" value="W"/>
+		</insert>
+		<insert tableName="project">
+			<column name="project_code" value="P2"/>
+			<column name="project_name" value="Project 2"/>
+			<column name="company_name" value="Company2"/>
+			<column name="manager_id" value="2"/>
+			<column name="repo_url" value="bitbucket"/>
+			<column name="status_id" value="3"/>
+			<column name="technologies" value="java"/>
+			<column name="billing_id" value="2"/>
+			<column name="start_date" value="2022-08-26"/>
+			<column name="end_date" value="2022-08-26"/>
+			<column name="record_status" value="W"/>
+		</insert>
+		<insert tableName="project">
+			<column name="project_code" value="P3"/>
+			<column name="project_name" value="Project 3"/>
+			<column name="company_name" value="Company3"/>
+			<column name="manager_id" value="3"/>
+			<column name="repo_url" value="bitbucket"/>
+			<column name="status_id" value="2"/>
+			<column name="technologies" value="java"/>
+			<column name="billing_id" value="3"/>
+			<column name="start_date" value="2022-08-26"/>
+			<column name="end_date" value="2022-08-26"/>
+			<column name="record_status" value="W"/>
+		</insert>
+		<insert tableName="project">
+			<column name="project_code" value="P4"/>
+			<column name="project_name" value="Project 4"/>
+			<column name="company_name" value="Company4"/>
+			<column name="manager_id" value="3"/>
+			<column name="repo_url" value="bitbucket"/>
+			<column name="status_id" value="2"/>
+			<column name="technologies" value="java"/>
+			<column name="billing_id" value="3"/>
+			<column name="start_date" value="2022-08-26"/>
+			<column name="end_date" value="2022-08-26"/>
+			<column name="record_status" value="W"/>
+		</insert>
+		<insert tableName="project">
+			<column name="project_code" value="P5"/>
+			<column name="project_name" value="Project 5"/>
+			<column name="company_name" value="Company4"/>
+			<column name="manager_id" value="3"/>
+			<column name="repo_url" value="bitbucket"/>
+			<column name="status_id" value="2"/>
+			<column name="technologies" value="java"/>
+			<column name="billing_id" value="3"/>
+			<column name="start_date" value="2022-08-26"/>
+			<column name="end_date" value="2022-08-26"/>
+			<column name="record_status" value="W"/>
+		</insert>
+		<insert tableName="project">
+			<column name="project_code" value="P6"/>
+			<column name="project_name" value="Project 6"/>
+			<column name="company_name" value="Company6"/>
+			<column name="manager_id" value="3"/>
+			<column name="repo_url" value="bitbucket"/>
+			<column name="status_id" value="2"/>
+			<column name="technologies" value="java"/>
+			<column name="billing_id" value="3"/>
+			<column name="start_date" value="2022-08-26"/>
+			<column name="end_date" value="2022-08-26"/>
+			<column name="record_status" value="W"/>
+		</insert>
+		<insert tableName="project">
+			<column name="project_code" value="P7"/>
+			<column name="project_name" value="Project 7"/>
+			<column name="company_name" value="Company7"/>
+			<column name="manager_id" value="3"/>
+			<column name="repo_url" value="bitbucket"/>
+			<column name="status_id" value="2"/>
+			<column name="technologies" value="java"/>
+			<column name="billing_id" value="3"/>
+			<column name="start_date" value="2022-08-26"/>
+			<column name="end_date" value="2022-08-26"/>
+			<column name="record_status" value="W"/>
+		</insert>
+		<insert tableName="project">
+			<column name="project_code" value="P8"/>
+			<column name="project_name" value="Project 8"/>
+			<column name="company_name" value="Company8"/>
+			<column name="manager_id" value="3"/>
+			<column name="repo_url" value="bitbucket"/>
+			<column name="status_id" value="2"/>
+			<column name="technologies" value="java"/>
+			<column name="billing_id" value="3"/>
+			<column name="start_date" value="2022-08-26"/>
+			<column name="end_date" value="2022-08-26"/>
+			<column name="record_status" value="W"/>
+		</insert>
+		<insert tableName="project">
+			<column name="project_code" value="P9"/>
+			<column name="project_name" value="Project 9"/>
+			<column name="company_name" value="Company9"/>
+			<column name="manager_id" value="3"/>
+			<column name="repo_url" value="bitbucket"/>
+			<column name="status_id" value="2"/>
+			<column name="technologies" value="java"/>
+			<column name="billing_id" value="3"/>
+			<column name="start_date" value="2022-08-26"/>
+			<column name="end_date" value="2022-08-26"/>
+			<column name="record_status" value="W"/>
+		</insert>
+		<insert tableName="project">
+			<column name="project_code" value="P10"/>
+			<column name="project_name" value="Project 10"/>
+			<column name="company_name" value="Company10"/>
+			<column name="manager_id" value="3"/>
+			<column name="repo_url" value="bitbucket"/>
+			<column name="status_id" value="2"/>
+			<column name="technologies" value="java"/>
+			<column name="billing_id" value="3"/>
+			<column name="start_date" value="2022-08-26"/>
+			<column name="end_date" value="2022-08-26"/>
+			<column name="record_status" value="W"/>
+		</insert>
+		<insert tableName="project">
+			<column name="project_code" value="P11"/>
+			<column name="project_name" value="Project 11"/>
+			<column name="company_name" value="Company11"/>
+			<column name="manager_id" value="3"/>
+			<column name="repo_url" value="bitbucket"/>
+			<column name="status_id" value="2"/>
+			<column name="technologies" value="java"/>
+			<column name="billing_id" value="3"/>
+			<column name="start_date" value="2022-08-26"/>
+			<column name="end_date" value="2022-08-26"/>
+			<column name="record_status" value="W"/>
+		</insert>
+		<insert tableName="project">
+			<column name="project_code" value="P12"/>
+			<column name="project_name" value="Project 12"/>
+			<column name="company_name" value="Company12"/>
+			<column name="manager_id" value="3"/>
+			<column name="repo_url" value="bitbucket"/>
+			<column name="status_id" value="2"/>
+			<column name="technologies" value="java"/>
+			<column name="billing_id" value="3"/>
+			<column name="start_date" value="2022-08-26"/>
+			<column name="end_date" value="2022-08-26"/>
+			<column name="record_status" value="W"/>
+		</insert>
+		<insert tableName="project">
+			<column name="project_code" value="P13"/>
+			<column name="project_name" value="Project 13"/>
+			<column name="company_name" value="Company13"/>
+			<column name="manager_id" value="3"/>
+			<column name="repo_url" value="bitbucket"/>
+			<column name="status_id" value="2"/>
+			<column name="technologies" value="java"/>
+			<column name="billing_id" value="3"/>
+			<column name="start_date" value="2022-08-26"/>
+			<column name="end_date" value="2022-08-26"/>
+			<column name="record_status" value="W"/>
+		</insert>
+		<insert tableName="project">
+			<column name="project_code" value="P14"/>
+			<column name="project_name" value="Project 14"/>
+			<column name="company_name" value="Company14"/>
+			<column name="manager_id" value="3"/>
+			<column name="repo_url" value="bitbucket"/>
+			<column name="status_id" value="2"/>
+			<column name="technologies" value="java"/>
+			<column name="billing_id" value="3"/>
+			<column name="start_date" value="2022-08-26"/>
+			<column name="end_date" value="2022-08-26"/>
+			<column name="record_status" value="W"/>
+		</insert>
+	</changeSet>
+	<changeSet id="insert-project-contributors" author="Sumit Shekhar">
+		<insert tableName="project_contributors">
+			<column name="project_id" value="1"/>
+			<column name="contributor_id" value="5"/>
+			<column name="record_status" value="W"/>
+		</insert>
+		<insert tableName="project_contributors">
+			<column name="project_id" value="1"/>
+			<column name="contributor_id" value="2"/>
+			<column name="record_status" value="W"/>
+		</insert>
+		<insert tableName="project_contributors">
+			<column name="project_id" value="2"/>
+			<column name="contributor_id" value="3"/>
+			<column name="record_status" value="W"/>
+		</insert>
+		<insert tableName="project_contributors">
+			<column name="project_id" value="2"/>
+			<column name="contributor_id" value="1"/>
+			<column name="record_status" value="W"/>
+		</insert>
+		<insert tableName="project_contributors">
+			<column name="project_id" value="3"/>
+			<column name="contributor_id" value="4"/>
+			<column name="record_status" value="W"/>
+		</insert>
+	</changeSet>
+
+	<changeSet id="7" author="Himanshu">
+		<createTable tableName="user_credentials">
+			<column name="username" type="varchar(30)"/>
+			<column name="password" type="varchar(30)"/>
+			<column name="email" type="varchar(100)"/>
+			<column name="role" type="varchar(30)"/>
+		</createTable>
+		<addPrimaryKey tableName="user_credentials"
+					   columnNames="username" />
+	</changeSet>
+	<changeSet id="insert-users" author="Himanshu">
+		<insert tableName="user_credentials">
+			<column name="username" value="user" />
+			<column name="password" value="user" />
+			<column name="email" value="abc@gmail.com" />
+			<column name="role" value="ROLE_USER" />
+		</insert>
+		<insert tableName="user_credentials">
+			<column name="username" value="admin" />
+			<column name="password" value="admin" />
+			<column name="email" value="abc@gmail.com" />
+			<column name="role" value="ROLE_ADMIN" />
+		</insert>
+	</changeSet>
+</databaseChangeLog>
